@@ -6,13 +6,14 @@ Website repo for Uniquely Yours Catering Co.
 
 # Content to edit:
 
-## Testimonials
+## Menu Items
 
-## Menu
+Edit items via the `*.mdx` files under [./src/pages/menu/items](./src/pages/menu/items).
 
-Edit `.mdx` files under `./src/pages/menu`.
+## Top Level Pages
 
-## Contact
+[About](./src/pages/about.mdx)
+[Services](./src/pages/services.mdx)
 
 ---
 
