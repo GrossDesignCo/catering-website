@@ -1,0 +1,9 @@
+.menuPricing {
+  border-top: 1px solid lch(50 0 0 / 50%);
+}
+
+.menuPricing li {
+  display: flex;
+  justify-content: space-between;
+  font-variant-numeric: tabular-nums;
+}
