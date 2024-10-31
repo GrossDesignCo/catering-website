@@ -1,0 +1,26 @@
+.footer {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(0deg, #dad3c4 0%, #dad3c400 50%);
+}
+
+.links {
+  display: flex;
+  gap: 1em;
+}
+
+.copyright {
+  font-size: 0.75em;
+  opacity: 0.8;
+  padding-top: 0.75em;
+}
+
+.quote {
+  padding-block: 3em;
+  background-image: url('/floral-divider.svg');
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: 300px;
+}

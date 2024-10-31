@@ -1,23 +1,16 @@
 import { Header } from './header';
 import { Footer } from './footer';
-import localFont from 'next/font/local';
+import cx from 'classnames';
+import styles from './layout.module.css';
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-});
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-});
-
-export default function Layout({ children }: React.PropsWithChildren) {
+export default function Layout({
+  children,
+  className,
+}: React.ComponentProps<'div'>) {
   return (
-    <div className={`page ${geistSans.variable} ${geistMono.variable}`}>
+    <div className={cx(styles.page, className)}>
       <Header />
-      <main>{children}</main>
+      <main className={styles.main}>{children}</main>
       <Footer />
     </div>
   );

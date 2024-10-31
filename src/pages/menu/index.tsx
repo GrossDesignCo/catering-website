@@ -1,10 +1,10 @@
 import { MenuItem } from '@/types';
 import fs from 'fs';
 import path from 'path';
-import { serialize } from 'next-mdx-remote/serialize';
+import matter from 'gray-matter';
 import { MenuPricing } from '@/components/menu-pricing';
 // File name kept the same to preserve content naming convention
-import MenuPageContent from '@/pages/menu/index.mdx';
+import MenuPageContent from '@/pages/menu/menu.mdx';
 
 type MenuPageProps = {
   menuItems: MenuItem[];
@@ -26,35 +26,25 @@ export default function MenuPage({ menuItems }: MenuPageProps) {
  * 2. Return array of metadata for each item
  */
 export async function getStaticProps() {
-  const menuDir = path.join(process.cwd(), './src/pages/menu/items');
-  const filePaths = fs
-    .readdirSync(menuDir)
-    .filter((file) => file.endsWith('.mdx'));
+  // ITEMS_PATH is useful when you want to get the path to a specific file
+  const ITEMS_PATH = path.join(process.cwd(), 'src/pages/menu/items');
 
-  const menuItems = await Promise.all(
-    filePaths.map(async (filePath) => {
-      const module = await import(`./items/${filePath}`);
+  // menuItemFilePaths is the list of all mdx files inside the ITEMS_PATH directory
+  const menuItemFilePaths = fs
+    .readdirSync(ITEMS_PATH)
+    // Only include md(x) files
+    .filter((path) => path.endsWith('.mdx'));
 
-      console.log('get static', { module });
-      const mdxSource = await serialize(module.default);
+  const menuItems = menuItemFilePaths.map((filePath) => {
+    const source = fs.readFileSync(path.join(ITEMS_PATH, filePath));
+    const { content, data } = matter(source);
 
-      const { metadata } = module;
-      const slug = filePath.replace('.mdx', '');
-
-      console.log('get static', {
-        // filePath,
-        // module,
-        // metadata,
-        mdxSource,
-      });
-
-      return {
-        ...metadata,
-        mdxSource,
-        slug,
-      };
-    })
-  );
+    return {
+      content,
+      data,
+      filePath,
+    };
+  });
 
   return { props: { menuItems } };
 }

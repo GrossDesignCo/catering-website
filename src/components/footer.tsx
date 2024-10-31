@@ -1,5 +1,7 @@
 import Link from 'next/link';
-import FooterContent from './footer.mdx';
+import FooterCopyright from './footer-copyright.mdx';
+import FooterQuote from './footer-quote.mdx';
+import styles from './footer.module.css';
 
 const links = {
   Facebook: 'https://www.facebook.com/UniquelyYoursCatering',
@@ -10,16 +12,23 @@ const links = {
 
 export const Footer = ({}) => {
   return (
-    <div>
-      {Object.entries(links).map(([title, href]) => {
-        return (
-          <Link key={href} href={href} target="_blank" rel="noopener">
-            {title}
-          </Link>
-        );
-      })}
+    <footer className={styles.footer}>
+      <div className={styles.quote}>
+        <FooterQuote />
+      </div>
+      <div className={styles.links}>
+        {Object.entries(links).map(([title, href]) => {
+          return (
+            <Link key={href} href={href} target="_blank" rel="noopener">
+              {title}
+            </Link>
+          );
+        })}
+      </div>
 
-      <FooterContent />
-    </div>
+      <div className={styles.copyright}>
+        <FooterCopyright />
+      </div>
+    </footer>
   );
 };
