@@ -1,0 +1,15 @@
+.menuQuote {
+  position: sticky;
+  top: 1em;
+  margin-top: 2em;
+  background-color: var(--bg);
+  padding: 1em;
+  border: 1px solid var(--fg);
+  box-shadow: 4px 4px 0 0 var(--fg-low-contrast);
+}
+
+@media (max-width: 600px) {
+  .menuQuote {
+    bottom: 1em;
+  }
+}

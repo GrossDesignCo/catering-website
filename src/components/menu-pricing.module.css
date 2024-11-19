@@ -6,11 +6,28 @@
   display: flex;
   flex-direction: column;
   gap: 1em;
-  max-width: 75ch;
+  max-width: 50ch;
+}
+
+.menuItem {
+  display: flex;
+  gap: 1em;
 }
 
 .menuItem .data {
   display: flex;
   justify-content: space-between;
   font-variant-numeric: tabular-nums;
+  margin-bottom: 0.25em;
+}
+
+.menuItem .qtyInput {
+  appearance: none;
+  border: 1px solid var(--fg);
+  color: var(--fg);
+  background-color: var(--bg);
+  font: inherit;
+  width: 6ch;
+  padding: 0.25ch 0.5ch;
+  box-shadow: 4px 4px 0 0 var(--fg-low-contrast);
 }

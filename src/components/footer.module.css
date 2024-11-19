@@ -18,9 +18,13 @@
 }
 
 .quote {
-  padding-block: 3em;
+  padding: 3em 1em;
   background-image: url('/floral-divider.svg');
   background-repeat: no-repeat;
   background-position: 50% 0;
   background-size: 300px;
+}
+
+.quote blockquote {
+  max-width: 45ch;
 }

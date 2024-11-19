@@ -1,3 +1,8 @@
 .home {
   padding: 0;
 }
+
+.home :global(.home-logo) {
+  margin: -2em auto;
+  max-width: 75ch;
+}
