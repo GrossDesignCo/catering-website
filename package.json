@@ -15,10 +15,12 @@
     "@types/mdx": "^2.0.13",
     "classnames": "^2.5.1",
     "gray-matter": "^4.0.3",
+    "informed": "^4.60.5",
     "next": "15.0.1",
     "next-mdx-remote": "^5.0.0",
     "react": "18.x.x",
-    "react-dom": "18.x.x"
+    "react-dom": "18.x.x",
+    "resend": "^4.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",

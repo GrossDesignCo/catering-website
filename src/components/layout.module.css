@@ -3,6 +3,9 @@
   font-family: var(--font-geist-sans);
   display: flex;
   flex-direction: column;
+  border-top: 1em solid var(--logo-green);
+  border-bottom: 1em solid var(--logo-green);
+  background: var(--bg);
 }
 
 .main {
@@ -12,7 +15,6 @@
 }
 
 /* Per-page floral graphics */
-
 :global(.contact) .main {
   background-image: url('/flowers.svg');
   background-repeat: no-repeat;

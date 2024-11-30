@@ -50,7 +50,8 @@ export default function MenuPage({ menuItems }: MenuPageProps) {
  * 2. Return array of metadata for each item
  */
 export async function getStaticProps() {
-  const categories = ['lunch', 'dinner', 'deserts'];
+  // TODO: Recursively search the menu/items dir instead of hard-coded list
+  const categories = ['lunch', 'dinner', 'desserts'];
   const menuItems: MenuItem[] = [];
   categories.forEach((category) => {
     // ITEMS_PATH is useful when you want to get the path to a specific file

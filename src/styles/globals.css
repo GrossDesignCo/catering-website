@@ -1,7 +1,9 @@
 :root {
   --bg: #fffaef;
+  --bg-light: #fffffe;
   --fg: #545454;
-  --fg-low-contrast: #54545471;
+  --fg-low-contrast: #54545444;
+  --fg-high-contrast: #2f2f2f;
   --logo-bg: #fffaef;
   --logo-green: #6d6d1e;
   --logo-text: #545454;
@@ -22,8 +24,7 @@ body {
 
 body {
   color: var(--fg);
-  background: var(--bg);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--logo-green);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -45,8 +46,9 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-  box-shadow: 0 2px 0 0 transparent;
+  box-shadow: 0 1px 0 0 var(--fg-low-contrast);
   transition: 0.3s ease;
+  color: var(--fg-high-contrast);
 }
 
 button {
@@ -56,7 +58,7 @@ button {
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   a:hover {
-    box-shadow: 0 2px 0 0 var(--fg-low-contrast);
+    box-shadow: 0 2px 0 0 var(--fg);
   }
 }
 
@@ -75,6 +77,13 @@ button {
     filter: invert();
   }
 } */
+
+hr {
+  margin: 2em 0;
+  border: none;
+  height: 1px;
+  background-color: var(--fg-low-contrast);
+}
 
 blockquote {
   text-align: center;
@@ -126,15 +135,87 @@ blockquote::after {
   line-height: 1.4em;
 }
 
-.form-item {
-  display: flex;
-  flex-direction: column;
-}
-
 .visually-hidden {
   height: 1px;
   width: 1px;
   overflow: hidden;
   font-size: 1px;
   position: absolute;
+}
+
+/**
+ * General/Util Layout
+ */
+
+.split-layout {
+  display: flex;
+  gap: 2em;
+}
+
+.split-layout > * {
+  flex-grow: 1;
+  min-width: 33%;
+}
+
+@media (max-width: 600px) {
+  .split-layout {
+    flex-direction: column;
+  }
+}
+
+/**
+ * Forms
+ */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  min-width: 24ch;
+}
+
+.form hr {
+  margin: 1em 0;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 0.25em;
+}
+
+input,
+select,
+textarea,
+button {
+  appearance: none;
+  border: 1px solid var(--fg);
+  color: var(--fg);
+  background-color: var(--bg-light);
+  font: inherit;
+  padding: 0.25ch 0.5ch;
+  box-shadow: 4px 4px 0 0 var(--fg-low-contrast);
+  border-radius: 0.25em;
+  width: 100%;
+  max-width: 40ch;
+}
+
+input::-webkit-inner-spin-button {
+  display: none;
+}
+
+button {
+  color: var(--bg);
+  background-color: var(--fg);
+  padding: 0.5ch 1ch;
+}
+
+button[type='submit'] {
+  padding-block: 0.5em;
+}
+
+select {
+  background: url(/select-down-arrow.svg) calc(100% - 0.25em) center no-repeat;
+  background-color: var(--bg-light);
+  background-size: auto 66%;
 }

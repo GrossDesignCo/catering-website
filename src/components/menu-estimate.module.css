@@ -6,6 +6,7 @@
   padding: 1em;
   border: 1px solid var(--fg);
   box-shadow: 4px 4px 0 0 var(--fg-low-contrast);
+  border-radius: 0.25em;
 }
 
 @media (max-width: 600px) {

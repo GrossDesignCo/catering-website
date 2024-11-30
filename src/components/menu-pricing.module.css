@@ -5,13 +5,17 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 2em;
   max-width: 50ch;
 }
 
 .menuItem {
   display: flex;
   gap: 1em;
+}
+
+.description {
+  flex-grow: 1;
 }
 
 .menuItem .data {
@@ -21,13 +25,21 @@
   margin-bottom: 0.25em;
 }
 
-.menuItem .qtyInput {
+.qty {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  flex-basis: 0;
+}
+
+.qtyInput {
+  width: 100%;
   appearance: none;
-  border: 1px solid var(--fg);
-  color: var(--fg);
-  background-color: var(--bg);
-  font: inherit;
-  width: 6ch;
-  padding: 0.25ch 0.5ch;
-  box-shadow: 4px 4px 0 0 var(--fg-low-contrast);
+  text-align: center;
+}
+
+.qtyButtons {
+  display: flex;
+  font-size: 0.75em;
+  gap: 0.5em;
 }

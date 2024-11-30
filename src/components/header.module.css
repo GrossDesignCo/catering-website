@@ -58,6 +58,7 @@ a.logo {
   position: relative;
   text-align: end;
   z-index: 20;
+  box-shadow: none;
 }
 
 .narrowMenuTrigger svg {
@@ -69,7 +70,7 @@ a.logo {
 }
 
 .narrowMenuTrigger .topLine {
-  transform: translateY(-0.5em);
+  transform: translateY(-0.4em);
 }
 
 .narrowMenuTrigger .midLine {
@@ -84,13 +85,16 @@ a.logo {
   position: fixed;
   inset: 0;
   margin: auto;
-  background-color: #fff;
+  background-color: var(--bg-light);
+  border-top: 1rem solid var(--fg-low-contrast);
+  border-bottom: 1rem solid var(--fg-low-contrast);
   padding: 2.75em 2em;
   display: flex;
   flex-direction: column;
   align-items: start;
   gap: 2em;
   font-size: 2em;
+  font-family: var(--font-family-belleza);
   z-index: 10;
 
   /* Transition props */
