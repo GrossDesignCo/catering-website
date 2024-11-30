@@ -1,6 +1,7 @@
 import { Form, Input, Select, Relevant, TextArea } from 'informed';
 
 export const ContactForm = ({}) => {
+  // @ts-expect-error raw form data
   const onSubmit = ({ values }) => console.log(values);
 
   return (
