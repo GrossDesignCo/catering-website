@@ -1,7 +1,8 @@
+import { ChangeEvent } from 'react';
+import Markdown from 'react-markdown';
 import { ItemQtyMap, MenuItem } from '@/types';
 
 import styles from './menu-pricing.module.css';
-import { ChangeEvent } from 'react';
 
 type MenuPricingProps = {
   menuItems: MenuItem[];
@@ -41,7 +42,9 @@ export const MenuPricing = ({
                 <span>{data.title}</span>{' '}
                 <span>${parseFloat(data.price).toFixed(2)}</span>
               </h3>
-              <span>{content}</span>
+              <span>
+                <Markdown>{content}</Markdown>
+              </span>
             </div>
             <div className={styles.qty}>
               <div>
