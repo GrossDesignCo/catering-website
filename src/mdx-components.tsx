@@ -1,5 +1,7 @@
 import type { MDXComponents } from 'mdx/types';
 import { ContactForm } from '@/components/contact-form';
+import { PostEventForm } from '@/components/post-event-form';
+import { FooterLinks } from './components/footer-links';
 // import MenuPricing from '@/pages/menu-pricing';
 // import { SoftImage } from './components/soft-image';
 
@@ -14,6 +16,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // MenuPricing,
     // SoftImage,
     ContactForm,
+    PostEventForm,
+    FooterLinks,
     ...components,
   };
 }

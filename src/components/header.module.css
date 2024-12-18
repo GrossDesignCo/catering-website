@@ -42,16 +42,17 @@ a.logo {
   height: 50vh;
 } */
 
-:where(button).narrowMenuTrigger {
+:where(button).narrowMenuTrigger,
+:where(button).narrowMenuTrigger:hover {
   appearance: none;
   border: none;
   background: transparent;
   font: inherit;
   color: inherit;
+  color: transparent;
 }
 
 .narrowMenuTrigger {
-  color: transparent;
   user-select: none;
   display: block;
   width: 2.5em;

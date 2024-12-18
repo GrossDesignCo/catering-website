@@ -18,6 +18,12 @@
   flex-grow: 1;
 }
 
+.menuCategory {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
 .menuItem .data {
   display: flex;
   justify-content: space-between;

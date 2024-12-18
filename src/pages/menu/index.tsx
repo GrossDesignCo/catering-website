@@ -1,4 +1,4 @@
-import { ItemQtyMap, MenuItem } from '@/types';
+import { ItemQtyMap, MenuItemsByCategory } from '@/types';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -10,7 +10,7 @@ import styles from '@/styles/Menu.module.css';
 import { useState } from 'react';
 
 type MenuPageProps = {
-  menuItems: MenuItem[];
+  menuItems: MenuItemsByCategory;
 };
 
 export default function MenuPage({ menuItems }: MenuPageProps) {
@@ -51,9 +51,12 @@ export default function MenuPage({ menuItems }: MenuPageProps) {
  */
 export async function getStaticProps() {
   // TODO: Recursively search the menu/items dir instead of hard-coded list
-  const categories = ['lunch', 'dinner', 'desserts'];
-  const menuItems: MenuItem[] = [];
-  categories.forEach((category) => {
+  const categories: MenuItemsByCategory = {
+    lunch: [],
+    dinner: [],
+    desserts: [],
+  };
+  Object.keys(categories).forEach((category) => {
     // ITEMS_PATH is useful when you want to get the path to a specific file
     const ITEMS_PATH = path.join(
       process.cwd(),
@@ -66,7 +69,7 @@ export async function getStaticProps() {
       // Only include md(x) files
       .filter((path) => path.endsWith('.mdx'));
 
-    menuItems.push(
+    categories[category].push(
       ...menuItemFilePaths.map((filePath) => {
         const source = fs.readFileSync(path.join(ITEMS_PATH, filePath));
         const { content, data } = matter(source);
@@ -81,5 +84,5 @@ export async function getStaticProps() {
     );
   });
 
-  return { props: { menuItems } };
+  return { props: { menuItems: categories } };
 }

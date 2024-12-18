@@ -1,4 +1,5 @@
 import { Form, Input, Select, Relevant, TextArea } from 'informed';
+import { FormItem } from './form-item';
 
 export const ContactForm = ({}) => {
   // @ts-expect-error raw form data
@@ -6,20 +7,20 @@ export const ContactForm = ({}) => {
 
   return (
     <Form onSubmit={onSubmit} className="form">
-      <div className="form-item">
+      <FormItem>
         <Input type="date" name="event date" label="Event Date" />
-      </div>
+      </FormItem>
 
-      <div className="form-item">
+      <FormItem>
         <Input
           name="people-count"
           type="number"
           label="Number of People"
           placeholder="0"
         />
-      </div>
+      </FormItem>
 
-      <div className="form-item">
+      <FormItem>
         <Select name="event-type" label="Type of Event">
           <option value="wedding" label="Wedding" />
           <option value="breakfast" label="Breakfast" />
@@ -28,9 +29,9 @@ export const ContactForm = ({}) => {
           <option value="ongoing" label="Ongoing" />
           <option value="other" label="Other" />
         </Select>
-      </div>
+      </FormItem>
 
-      <div className="form-item">
+      <FormItem>
         <Relevant
           when={({ formState }) => formState.values['event-type'] === 'other'}
         >
@@ -40,24 +41,24 @@ export const ContactForm = ({}) => {
             placeholder="All day, Rotating locations, "
           />
         </Relevant>
-      </div>
+      </FormItem>
 
       <hr />
 
-      <div className="form-item">
+      <FormItem>
         <Input name="name" label="Name" />
-      </div>
+      </FormItem>
 
-      <div className="form-item">
+      <FormItem>
         <Input
           name="email"
           label="Email"
           type="email"
           placeholder="name@example.com"
         />
-      </div>
+      </FormItem>
 
-      <div className="form-item">
+      <FormItem>
         <Input
           name="phone"
           label="Phone"
@@ -65,17 +66,17 @@ export const ContactForm = ({}) => {
           formatter="(###)-###-####"
           placeholder="(___)-___-____"
         />
-      </div>
+      </FormItem>
 
-      <div className="form-item">
+      <FormItem>
         <Select name="contact-preference" label="Contact Preference">
           <option value="email" label="Email" />
           <option value="text" label="Text" />
           <option value="phone" label="Phone" />
         </Select>
-      </div>
+      </FormItem>
 
-      <div className="form-item">
+      <FormItem>
         <Relevant
           when={({ formState }) =>
             formState.values['contact-preference'] === 'phone'
@@ -88,8 +89,8 @@ export const ContactForm = ({}) => {
             <option value="other" label="Other" />
           </Select>
         </Relevant>
-      </div>
-      <div className="form-item">
+      </FormItem>
+      <FormItem>
         <Relevant
           when={({ formState }) => formState.values['call-time'] === 'other'}
         >
@@ -99,7 +100,7 @@ export const ContactForm = ({}) => {
             placeholder="6-7:30pm Pacific"
           />
         </Relevant>
-      </div>
+      </FormItem>
 
       <button type="submit">Submit</button>
     </Form>

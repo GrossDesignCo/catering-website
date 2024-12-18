@@ -1,18 +1,23 @@
-import { ItemQtyMap, MenuItem } from '@/types';
+import { ItemQtyMap, MenuItemsByCategory } from '@/types';
+import NumberFlow from '@number-flow/react';
 
 import styles from './menu-estimate.module.css';
 
 type MenuEstimateProps = {
-  menuItems: MenuItem[];
+  menuItems: MenuItemsByCategory;
   selectedItems: ItemQtyMap;
 };
+
+// TODO: https://number-flow.barvian.me
 
 export const MenuEstimate = ({
   menuItems,
   selectedItems,
 }: MenuEstimateProps) => {
   const selectedPrices = Object.entries(selectedItems).map(([key, qty = 0]) => {
-    const matchingMenuItem = menuItems.find((item) => key === item.itemKey);
+    const matchingMenuItem = Object.values(menuItems)
+      .flat()
+      .find((item) => key === item.itemKey);
     const itemTotal = parseFloat(matchingMenuItem?.data.price ?? '0') * qty;
 
     return itemTotal;
@@ -25,8 +30,17 @@ export const MenuEstimate = ({
   return (
     <div className={styles.menuQuote}>
       <div>
-        <strong>Est. Event Quote</strong>
-        <div>${totalPrice.toFixed(2)}</div>
+        <div className={styles.quoteLabel}>Est. Event Quote</div>
+        <div className={styles.quotePrice}>
+          <NumberFlow
+            value={totalPrice}
+            format={{
+              style: 'currency',
+              currency: 'USD',
+              trailingZeroDisplay: 'stripIfInteger',
+            }}
+          />
+        </div>
       </div>
     </div>
   );

@@ -28,22 +28,10 @@ export default function App({ Component, pageProps }: AppProps) {
       <style jsx global>{`
         :root {
           --font-family-belleza: ${belleza.style.fontFamily};
+          --font-weight-belleza: ${belleza.style.fontWeight};
           --font-family-geist-sans: ${geistSans.style.fontFamily};
           --font-family-brittney-signature: ${brittneySignature.style
             .fontFamily};
-        }
-
-        html {
-          font-family: ${geistSans.style.fontFamily};
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        blockquote {
-          font-family: ${belleza.style.fontFamily};
-          font-weight: ${belleza.style.fontWeight};
         }
       `}</style>
 

@@ -2,10 +2,14 @@
   --bg: #fffaef;
   --bg-light: #fffffe;
   --fg: #545454;
+  --fg-lowish-contrast: #54545499;
   --fg-low-contrast: #54545444;
   --fg-high-contrast: #2f2f2f;
   --logo-bg: #fffaef;
   --logo-green: #6d6d1e;
+  --logo-green-softest: #b8b37b;
+  --logo-green-semisoft: #a39f68;
+  --logo-green-soft: #c5c29b;
   --logo-text: #545454;
 }
 
@@ -22,6 +26,10 @@ body {
   background-color: var(--logo-bg);
 }
 
+html {
+  font-family: var(--font-family-geist-sans);
+}
+
 body {
   color: var(--fg);
   background-color: var(--logo-green);
@@ -35,12 +43,32 @@ body {
   margin: 0;
 }
 
-:is(h1, h2, h3, h4, p) {
+h1,
+h2,
+h3,
+h4,
+p {
   max-width: 75ch;
 }
 
 :is(h1, h2, h3, h4, p):not(:first-child) {
   margin-top: 0.75em;
+}
+
+:is(h4 + p):not(:first-child) {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3,
+blockquote {
+  font-family: var(--font-family-belleza);
+  font-weight: var(--font-weight-belleza);
+}
+
+h4 {
+  font-weight: 600;
 }
 
 a {
@@ -58,8 +86,13 @@ button {
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   a:hover {
-    box-shadow: 0 2px 0 0 var(--fg);
+    box-shadow: 0 6px 0 -4px var(--fg);
   }
+}
+
+ul,
+ol {
+  padding-inline-start: 1.25em;
 }
 
 :focus-visible {
@@ -166,11 +199,16 @@ blockquote::after {
 /**
  * Forms
  */
-.form {
+.form,
+fieldset {
   display: flex;
   flex-direction: column;
   gap: 1em;
   min-width: 24ch;
+}
+
+p + .form {
+  margin-top: 1em;
 }
 
 .form hr {
@@ -184,12 +222,18 @@ blockquote::after {
   gap: 0.25em;
 }
 
+fieldset {
+  border: none;
+  padding-block-start: 1em;
+}
+
 input,
 select,
 textarea,
-button {
+button,
+.radio-rating label {
   appearance: none;
-  border: 1px solid var(--fg);
+  border: 1px solid var(--fg-lowish-contrast);
   color: var(--fg);
   background-color: var(--bg-light);
   font: inherit;
@@ -198,6 +242,7 @@ button {
   border-radius: 0.25em;
   width: 100%;
   max-width: 40ch;
+  transition: 0.3s ease;
 }
 
 input::-webkit-inner-spin-button {
@@ -207,7 +252,15 @@ input::-webkit-inner-spin-button {
 button {
   color: var(--bg);
   background-color: var(--fg);
+  border: 1px solid var(--fg);
   padding: 0.5ch 1ch;
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  button:hover {
+    background-color: var(--fg-high-contrast);
+  }
 }
 
 button[type='submit'] {
@@ -218,4 +271,23 @@ select {
   background: url(/select-down-arrow.svg) calc(100% - 0.25em) center no-repeat;
   background-color: var(--bg-light);
   background-size: auto 66%;
+}
+
+.radio-rating fieldset {
+  display: flex;
+  flex-direction: row;
+}
+
+.radio-rating input {
+  display: none;
+}
+
+.radio-rating label {
+  padding: 0.5ch 1ch;
+  text-align: center;
+}
+
+.radio-rating label:has(input:checked) {
+  color: var(--bg);
+  background-color: var(--fg);
 }

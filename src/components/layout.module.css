@@ -35,10 +35,3 @@
   background-position: 50% calc(100% - 2em);
   background-size: 50vh;
 }
-
-:global(.menu) .main {
-  background-image: url('/flowers-corner.svg');
-  background-repeat: no-repeat;
-  background-position: 95% calc(100% - 2em);
-  background-size: 30vh;
-}
